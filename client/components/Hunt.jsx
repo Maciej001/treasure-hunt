@@ -8,7 +8,9 @@ Hunt = React.createClass({
       locked1:          true,
       locked2:          true,
       locked3:          true,
-      answer: ""
+      allUnlocked:      false,
+      answer: "",
+      points: 0
     }
   },
   
@@ -19,16 +21,16 @@ Hunt = React.createClass({
     // Logic what happens when user answers
   },
 
-  indicatorColor(proximity) {
-    if (proximity > 0 && proximity < 0.5) {
+  indicatorColor( proximity)  {
+    if ( proximity > 0 && proximity < 0.5 ) {
       return '#bfff00';
-    } else if (proximity >= 0.5 && proximity < 1) {
+    } else if ( proximity >= 0.5 && proximity < 1 ) {
       return '#ffff00';
-    } else if (proximity >= 1 && proximity < 2) {
+    } else if ( proximity >= 1 && proximity < 2 ) {
       return '#ffbf00';
-    } else if (proximity >= 2 && proximity < 5) {
+    } else if ( proximity >= 2 && proximity < 5 ) {
       return '#ff8000';
-    } else if (proximity >= 5) {
+    } else if ( proximity >= 5 ) {
       return '#ff4000';
     }
   },
@@ -53,55 +55,59 @@ Hunt = React.createClass({
     return (
       <div>
         <div className="container hunt">
-          <div className="hunt-wrapper">
-            
-            <div className="row indicators">
-              <div className="col-xs-12">
-
-                <ul>
-                  <li className="indicator-1 indicator" style={indicator1Style}><i className={lockClass1}></i></li>
-                  <li className="indicator-2 indicator" style={indicator2Style}><i className={lockClass2}></i></li>
-                  <li className="indicator-3 indicator" style={indicator3Style}><i className={lockClass3}></i></li>
-                </ul>
-              </div>
-            </div>
-
-            <div className="row puzzles">
-              <div className="col-xs-12">
-
-                <div className="row questions">
-                  <div className="col-xs-12">
-                    <h1>Questions</h1>
-                    <p>Bla bla bla?</p>
-                  </div>
-                </div>
-                
-                <div className="row answers">
-                  <div className="col-xs-12">
-                    <h1>Anwers</h1>
-                    <form role="form" onSubmit={ this.submitAnswer }>
+          { this.state.allUnlocked ?
+            <Winner points={ this.state.points }/>
+          :
+            <div className="hunt-wrapper">
               
-                      <div className="form-group">
-                        <input 
-                          type="text" 
-                          className="form-control" 
-                          ref="answer" 
-                          placeholder="Answer" 
-                          onChange={ this.onNameChange }
-                        />
-                      </div>
+              <div className="row indicators">
+                <div className="col-xs-12">
 
-
-                      <button type="submit" id="submitButton" className="btn btn-hunt">Go!</button>
-
-                    </form>
-                  </div>
+                  <ul>
+                    <li className="indicator-1 indicator" style={indicator1Style}><i className={lockClass1}></i></li>
+                    <li className="indicator-2 indicator" style={indicator2Style}><i className={lockClass2}></i></li>
+                    <li className="indicator-3 indicator" style={indicator3Style}><i className={lockClass3}></i></li>
+                  </ul>
                 </div>
-
               </div>
-            </div>
 
-          </div>
+              <div className="row puzzles">
+                <div className="col-xs-12">
+
+                  <div className="row questions">
+                    <div className="col-xs-12">
+                      <h1>Questions</h1>
+                      <p>Bla bla bla?</p>
+                    </div>
+                  </div>
+                  
+                  <div className="row answers">
+                    <div className="col-xs-12">
+                      <h1>Anwers</h1>
+                      <form role="form" onSubmit={ this.submitAnswer }>
+                
+                        <div className="form-group">
+                          <input 
+                            type="text" 
+                            className="form-control" 
+                            ref="answer" 
+                            placeholder="Answer" 
+                            onChange={ this.onNameChange }
+                          />
+                        </div>
+
+
+                        <button type="submit" id="submitButton" className="btn btn-hunt">Go!</button>
+
+                      </form>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+          }
         </div>
       </div>
     )
