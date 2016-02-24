@@ -8,10 +8,13 @@ Hunt = React.createClass({
       locked1:          true,
       locked2:          true,
       locked3:          true,
-      answer: ""
+      answer: "",
+      timerStarted: Tools.getUnixTimestamp(),
+      timerEnded: false,
+      timerTotal: false
     }
   },
-  
+
   submitAnswer(e) {
     e.preventDefault();
     this.setState({ answer: this.refs.answer })
@@ -54,7 +57,7 @@ Hunt = React.createClass({
       <div>
         <div className="container hunt">
           <div className="hunt-wrapper">
-            
+
             <div className="row indicators">
               <div className="col-xs-12">
 
@@ -75,18 +78,18 @@ Hunt = React.createClass({
                     <p>Bla bla bla?</p>
                   </div>
                 </div>
-                
+
                 <div className="row answers">
                   <div className="col-xs-12">
                     <h1>Anwers</h1>
                     <form role="form" onSubmit={ this.submitAnswer }>
-              
+
                       <div className="form-group">
-                        <input 
-                          type="text" 
-                          className="form-control" 
-                          ref="answer" 
-                          placeholder="Answer" 
+                        <input
+                          type="text"
+                          className="form-control"
+                          ref="answer"
+                          placeholder="Answer"
                           onChange={ this.onNameChange }
                         />
                       </div>
@@ -107,4 +110,3 @@ Hunt = React.createClass({
     )
   }
 })
-  

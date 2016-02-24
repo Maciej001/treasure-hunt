@@ -4,7 +4,7 @@
 
 .hunt {
   color: white;
-  height: 100% !important; 
+  height: 100% !important;
   background: url("/images/home.png")  no-repeat center center fixed;
   background-size: cover;
 }
@@ -19,16 +19,22 @@
 }
 
 .indicators {
-  display: inline-block;
+//  display: inline-block;
+  width: 90%;
   margin: 0 auto;
-  padding: 20px 0;
+//  padding: 20px 0;
+  div {
+    text-align: center;
+    margin: 0 auto 0 -3%;
+    padding: 0;
+  }
 
 }
 
 .indicator {
   display: block;
   float: left;
-  margin-right: 30px;
+//  margin-right: 30px;
   height: 50px;
   width: 50px;
   border-radius: 50%;
@@ -37,12 +43,23 @@
   line-height: 50px;
 }
 
+
+
 .indicator-1, .indicator-2, .indicator-3,  {
   background: #555;
 }
 
+.indicator-1 {
+  margin-right: 20px;
+}
+
+.indicator-2{
+  margin-right: 20px;
+}
+
 .indicator-3 {
-  margin-right: 0;
+//  margin-right: 0;
+
 }
 
 #submitButton {
