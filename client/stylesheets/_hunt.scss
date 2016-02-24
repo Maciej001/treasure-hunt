@@ -66,3 +66,27 @@
   display: inline-block;
   margin: 0 auto;
 }
+
+.winner {
+  background: $blue;
+  text-align: center;
+  height: 1000px;
+
+  img {
+    width: 300px;
+    padding-top: 20px;
+    margin: 0 auto;
+  }
+
+  h1 {
+    animation-name: winner-header;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+  }
+
+  @keyframes winner-header {
+    0%   {font-size: 2rem;}
+    50% {font-size: 4rem;}
+    100% {font-size: 2rem;}
+  }
+}
