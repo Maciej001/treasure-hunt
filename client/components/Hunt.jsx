@@ -2,9 +2,12 @@ Hunt = React.createClass({
 
   getInitialState() {
     return {
-      proximityBeacon1: 10000,
-      proximityBeacon1: 10000,
-      proximityBeacon1: 10000,
+      proximityBeacon1: 10,
+      proximityBeacon2: 10,
+      proximityBeacon3: 10,
+      locked1:          true,
+      locked2:          true,
+      locked3:          true,
       answer: ""
     }
   },
@@ -16,7 +19,37 @@ Hunt = React.createClass({
     // Logic what happens when user answers
   },
 
+  indicatorColor(proximity) {
+    if (proximity > 0 && proximity < 0.5) {
+      return '#bfff00';
+    } else if (proximity >= 0.5 && proximity < 1) {
+      return '#ffff00';
+    } else if (proximity >= 1 && proximity < 2) {
+      return '#ffbf00';
+    } else if (proximity >= 2 && proximity < 5) {
+      return '#ff8000';
+    } else if (proximity >= 5) {
+      return '#ff4000';
+    }
+  },
+
   render() {
+    let lockClass1 = this.state.locked1 ? "fa fa-lock" : "fa fa-unlock",
+        lockClass2 = this.state.locked2 ? "fa fa-lock" : "fa fa-unlock",
+        lockClass3 = this.state.locked3 ? "fa fa-lock" : "fa fa-unlock";
+
+    let indicator1Style = {
+      background: this.indicatorColor( this.state.proximityBeacon1 )
+    }
+
+    let indicator2Style = {
+      background: this.indicatorColor( this.state.proximityBeacon2 )
+    }
+
+    let indicator3Style = {
+      background: this.indicatorColor( this.state.proximityBeacon3 )
+    }
+
     return (
       <div>
         <div className="container hunt">
@@ -26,9 +59,9 @@ Hunt = React.createClass({
               <div className="col-xs-12">
 
                 <ul>
-                  <li className="indicator-1 indicator">1</li>
-                  <li className="indicator-2 indicator">2</li>
-                  <li className="indicator-3 indicator">3</li>
+                  <li className="indicator-1 indicator" style={indicator1Style}><i className={lockClass1}></i></li>
+                  <li className="indicator-2 indicator" style={indicator2Style}><i className={lockClass2}></i></li>
+                  <li className="indicator-3 indicator" style={indicator3Style}><i className={lockClass3}></i></li>
                 </ul>
               </div>
             </div>
