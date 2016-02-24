@@ -11,7 +11,7 @@ Hunt = React.createClass({
       answer: "",
       timerStarted: Tools.getUnixTimestamp(),
       timerEnded: false,
-      timerTotal: false
+      timerTotal: false,
       allUnlocked:      false,
       points: 0
     }
@@ -74,40 +74,15 @@ Hunt = React.createClass({
                 </div>
               </div>
 
-              <div className="row puzzles">
-                <div className="col-xs-12">
+              { ( this.state.proximityBeacon1 < 0.1 && this.state.locked1 ) || 
+                ( this.state.proximityBeacon2 < 0.1 && this.state.locked2 && !this.state.locked1 ) ||
+                ( this.state.proximityBeacon3 < 0.1 && this.state.locked3 && !this.state.locked1 && !this.state.locked2 ) ?
 
-                  <div className="row questions">
-                    <div className="col-xs-12">
-                      <h1>Questions</h1>
-                      <p>Bla bla bla?</p>
-                    </div>
-                  </div>
-
-
-                  <div className="row answers">
-                    <div className="col-xs-12">
-                      <h1>Anwers</h1>
-                      <form role="form" onSubmit={ this.submitAnswer }>
-
-                        <div className="form-group">
-                          <input
-                            type="text"
-                            className="form-control"
-                            ref="answer"
-                            placeholder="Answer"
-                            onChange={ this.onNameChange }
-                          />
-                        </div>
-
-                        <button type="submit" id="submitButton" className="btn btn-hunt">Go!</button>
-
-                      </form>
-                    </div>
-                  </div>
-
-                </div>
-              </div>
+                <Puzzles />
+              : 
+                ""
+              }
+              
 
             </div>
           }
