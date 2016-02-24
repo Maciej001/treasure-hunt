@@ -1,0 +1,51 @@
+[data-reactid=".0"], [data-reactid=".0.1"] {
+  height: 100% !important;
+}
+
+.hunt {
+  color: white;
+  height: 100% !important; 
+  background: url("/images/home.png")  no-repeat center center fixed;
+  background-size: cover;
+}
+
+.hunt-wrapper {
+  background: $blue;
+  opacity: .9;
+  color: white;
+  margin: 5% 10px;
+  padding: 20px;
+  height: 89%;
+}
+
+.indicators {
+  display: inline-block;
+  margin: 0 auto;
+  padding: 20px 0;
+
+}
+
+.indicator {
+  display: block;
+  float: left;
+  margin-right: 30px;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  font-size: 16pt;
+  text-align: center;
+  line-height: 50px;
+}
+
+.indicator-1, .indicator-2, .indicator-3,  {
+  background: #555;
+}
+
+.indicator-3 {
+  margin-right: 0;
+}
+
+#submitButton {
+  display: inline-block;
+  margin: 0 auto;
+}

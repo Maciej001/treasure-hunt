@@ -16,4 +16,12 @@ FlowRouter.route('/',{
   }
 });
 
+FlowRouter.route('/hunt',{
+  name: 'Hunt', 
+  action(params) {
+    ReactLayout.render(MainLayout, { 
+      content:  <Hunt />
+    });
+  }
+});
 
